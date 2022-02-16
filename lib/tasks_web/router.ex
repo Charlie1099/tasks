@@ -20,10 +20,15 @@ defmodule TasksWeb.Router do
     get "/", PageController, :index
   end
 
+
   # Other scopes may use custom stacks.
-  # scope "/api", TasksWeb do
-  #   pipe_through :api
-  # end
+  scope "/api" do
+    pipe_through :api
+
+    get "/", Absinthe.Plug.GraphiQL, schema: TasksWeb.Api.Schema, interface: :\playground
+
+    post "/", Absinthe.Plug, schema: TasksWeb.Api.Schema
+  end
 
   # Enables LiveDashboard only for development
   #

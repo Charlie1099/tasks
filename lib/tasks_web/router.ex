@@ -25,7 +25,7 @@ defmodule TasksWeb.Router do
   scope "/api" do
     pipe_through :api
 
-    get "/", Absinthe.Plug.GraphiQL, schema: TasksWeb.Api.Schema, interface: :\playground
+    get "/", Absinthe.Plug.GraphiQL, schema: TasksWeb.Api.Schema, interface: :playground
 
     post "/", Absinthe.Plug, schema: TasksWeb.Api.Schema
   end
